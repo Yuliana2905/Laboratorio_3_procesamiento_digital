@@ -128,6 +128,35 @@ hombres, 150–500 Hz para mujeres) para eliminar ruido no deseado.
 
 4. Presente los valores obtenidos de jitter y shimmer para cada una de las 6 grabaciones (3 hombres, 3 mujeres).
 
+## PARTE C – Comparación y conclusiones 
+Comparar los resultados obtenidos entre las voces masculinas y femeninas.  
+1. ¿Qué diferencias se observan en la frecuencia fundamental? 
+2. ¿Qué otras diferencias notan en términos de brillo, media o intensidad? 
+3. Redactar conclusiones sobre el comportamiento de la voz en hombres y 
+mujeres a partir de los análisis realizados. 
+4. Discuta la importancia clínica del jitter y shimmer en el análisis de la voz.
+
+## PREGUNTAS PARA LA DISCUSIÓN 
+- ¿Cómo es la frecuencia fundamental de la densidad espectral de potencia asociada a una señal de voz masculina con respecto a la que se obtiene a partir de una señal de voz femenina, mayor o menor? ¿Qué hay del valor RMS? 
+-¿Qué limitaciones plantea el uso de características como shimmer y jitter para la detección de patologías como disartrias y afasias?
+
+# Diagramas de flujo
+
+## Parte A
+
+## Parte B
+
+## Bibliografia 
+
+-Oppenheim, A. V., Willsky, A. S., & Nawab, S. H. (1997). Signals and Systems. Prentice Hall.
+-Rabiner, L. R., & Schafer, R. W. (1978). Digital Processing of Speech Signals. Prentice Hall.
+-Deller, J. R., Proakis, J. G., & Hansen, J. H. (2000). Discrete-Time Processing of Speech Signals. IEEE Press.
+-Alim, S. A., & Rashid, N. K. A. (2018). Some commonly used speech feature extraction algorithms. IntechOpen.
+-Iser, B., Minker, W., & Schmidt, G. (2008). Bandwidth Extension of Speech Signals. Springer
+
+
+## Bibliografia 
+
 
 
 
