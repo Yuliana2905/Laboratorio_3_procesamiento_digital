@@ -68,5 +68,66 @@ El shimmer, por otro lado, mide la variación de la amplitud entre ciclos consec
 Estos parámetros son ampliamente utilizados en el análisis clínico de la voz, ya que valores elevados pueden indicar inestabilidad en la producción vocal o posibles alteraciones en el sistema fonador.
 
 
+# Objetivos
+
+# Objetivo General: 
+-Emplear técnicas de análisis espectral para la diferenciación o clasificación de señales de voz según el género. 
+# Objetivos Específicos :
+-Capturar y procesar señales de voz masculinas y femeninas. 
+-Aplicar la Transformada de Fourier como herramienta de análisis espectral de la voz. 
+-Extraer parámetros característicos de la señal de voz: frecuencia fundamental, frecuencia media, brillo, intensidad, jitter y shimmer. 
+-Comparar las diferencias principales entre señales de voz de hombres y mujeres a partir de su análisis en frecuencia. 
+-Desarrollar conclusiones sobre el comportamiento espectral de la voz humana en función del género.
+
+# Procedimiento y resultados
+### PARTE A – Adquisición de las señales de voz 
+1. Grabar con un micrófono la misma frase corta (aprox. 5 segundos) en 6 
+personas distintas: 3 hombres y 3 mujeres. Para esto pueden usar los 
+micrófonos de sus teléfonos inteligentes y configurar las características de 
+muestreo para que sean las mismas en todos los dispositivos. 
+2. Guardar cada archivo de voz en formato .wav con un nombre identificador 
+claro (ejemplo: mujer1.wav, hombre2.wav). 
+3. Importar las señales de voz en Python y graficarlas en el dominio del tiempo. 
+4. Calcular la Transformada de Fourier de cada señal y graficar su espectro de 
+magnitudes frecuenciales. 
+5. Identificar y reportar las siguientes características de cada señal: 
+a. Frecuencia fundamental. 
+b. Frecuencia media. 
+c. Brillo. 
+d. Intensidad (energía).
+
+### PARTE B – Medición de Jitter y Shimmer 
+1. Seleccione una de las grabaciones realizadas en la Parte A por cada género 
+(una voz de hombre y una de mujer). 
+- Aplique un filtro pasa-banda en el rango de la voz (80–400 Hz para 
+hombres, 150–500 Hz para mujeres) para eliminar ruido no deseado. 
+2. Medición del Jitter (variación en la frecuencia fundamental):
+
+
+- Detecte los periodos de vibración de la señal (usando cruces por cero o picos sucesivos). 
+- Calcule los periodos Ti de la señal de voz. 
+- Obtenga el jitter absoluto:
+
+ <img width="524" height="147" alt="image" src="https://github.com/user-attachments/assets/7e34ee44-ffa9-448c-b5bf-f5f476f32166" />
+
+- Calcule el jitter relativo (%):
+
+<img width="327" height="86" alt="image" src="https://github.com/user-attachments/assets/d41d5e56-9ef6-40a2-a828-1150dce5e1a9" />
+
+3. Medición del Shimmer (variación en la amplitud): 
+- Detecte los picos de amplitud Ai en cada ciclo. 
+- Obtenga el shimmer absoluto:
+
+<img width="565" height="135" alt="image" src="https://github.com/user-attachments/assets/e2bc5541-70fe-4b86-ad16-5536dd9af6f7" />
+
+
+- Calcule el shimmer relativo (%):
+
+<img width="639" height="126" alt="image" src="https://github.com/user-attachments/assets/e1bf0258-2b53-4c57-a8fc-42b8bb019c8a" />
+
+
+4. Presente los valores obtenidos de jitter y shimmer para cada una de las 6 grabaciones (3 hombres, 3 mujeres).
+
+
 
 
