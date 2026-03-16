@@ -149,10 +149,20 @@ mujeres a partir de los análisis realizados.
 ## Bibliografia 
 
 -Oppenheim, A. V., Willsky, A. S., & Nawab, S. H. (1997). Signals and Systems. Prentice Hall.
+
+
 -Rabiner, L. R., & Schafer, R. W. (1978). Digital Processing of Speech Signals. Prentice Hall.
+
+
 -Deller, J. R., Proakis, J. G., & Hansen, J. H. (2000). Discrete-Time Processing of Speech Signals. IEEE Press.
+
+
 -Alim, S. A., & Rashid, N. K. A. (2018). Some commonly used speech feature extraction algorithms. IntechOpen.
+
+
 -Iser, B., Minker, W., & Schmidt, G. (2008). Bandwidth Extension of Speech Signals. Springer
+
+
 
 
 ## Bibliografia 
