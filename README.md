@@ -276,7 +276,7 @@ for i,(freqs, magnitud) in enumerate(resultados):
 <img width="731" height="570" alt="image" src="https://github.com/user-attachments/assets/37ce6fd3-3fee-47dd-9d5c-912e27fcd683" />
 
 
-A partir del análisis espe ta, se calcularon loas siguientres parámetros característicos para cada señal:
+A partir del análisis espectra, se calcularon loas siguientres parámetros característicos para cada señal:
 
 Frecuancia fundamental (FO): determina como la frecuencia con mayor magnitud dentro de rango específico (80-300 Hz para hombres y 150-500 Hz para mujeres) lo cual permitió evital la detección de armónicos o ruido.
 
@@ -352,7 +352,7 @@ Frecuencia media: 1064.55 Hz
 Brillo: 1064.55 Hz
 Intensidad (RMS): 27.8765
 ```
-44444
+
 En los resultados obtenidos evidencian que las voces masculinas presentan frecuancias fundamentales mas bajas en cojmparacion con las voces feeninas, lo cual es cosistente con las diferencias fisiologicas en las cuerdas vocales.
 
 el analisis del centroide espectral permitio identificar una moyor concentración de energía en frecuencias bajas para las voces masculinas, mientras que las voces femeninas mostraron valores mas elevados, asociados a un mayor contenido de frecuencias altas, la intensidad de las señales vario entre los distintos hablantes, lo cual se atribuya a diferencias de energía vocal duranyte las grabaciones y la distancia del micrófono.
