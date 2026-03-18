@@ -81,16 +81,68 @@ Estos parámetros son ampliamente utilizados en el análisis clínico de la voz,
 
 # Procedimiento y resultados
 ### PARTE A – Adquisición de las señales de voz 
-1. Grabar con un micrófono la misma frase corta (aprox. 5 segundos) en 6 
-personas distintas: 3 hombres y 3 mujeres. Para esto pueden usar los 
-micrófonos de sus teléfonos inteligentes y configurar las características de 
-muestreo para que sean las mismas en todos los dispositivos. 
-2. Guardar cada archivo de voz en formato .wav con un nombre identificador 
-claro (ejemplo: mujer1.wav, hombre2.wav). 
-3. Importar las señales de voz en Python y graficarlas en el dominio del tiempo. 
-4. Calcular la Transformada de Fourier de cada señal y graficar su espectro de 
+Para el desarrollo de esta práctica, se realizador grabaciones de voz correspondientes a seis individuo, distribuidos en tres hombres y tres mujeres. Cada participante pronunció la misma frase con la duración aproximada de siete segundos, con el fin de garantizar condiciones comparables entre las señales.
+
+Las grabaciones fueron realizada utilizando dispositivos móviles, manteniendo parámetros de adquisición similares, especialmente en términos de frecuencias de muestreo o condiciones ambientales, se procuró minimizar la presencia de ruido externo y evitar la saturación de la señal durante el proceso de captura 
+
+Cada archivo fue almacenado en formato .wav y nombrado de manera identificable según el género y numero del hablante.
+
+```python
+pip install numpy matplotlib scipy librosa
+```
+
+Las señales adquiridas fueron importadas a Google Colab (phyton) y fueron respresentadas en el doinio del tiempo, estas gragicas permitieron observar la variación de amplitud en función del tiempo para cada señal, estas graficas permitieron observar la variacion de la amplitud en funcion del tiempo para cada señal, se evidencio que todas las señales presentan una duracion aproximada de siete segundos con variaciones en la amplitud asociadas a la intensidad vocal de cada hablante, asi mismo se identificaron pequeñas pausas y posibles componentes de ruido en algunas grabaciones que se atribuyen a condiciones del entorno durabte la adquisición.
+
+```python
+import numpy as np
+import matplotlib.pyplot as plt
+from scipy.io import wavfile
+
+archivos=["AUDIO HOMBRE 1 (1).wav", "HOMBRE 2.wav", "HOMBRE 3.wav"]
+señales=[]
+frecuencias_muestreo=[]
+
+for archivo in archivos:
+    fs, señal=wavfile.read(archivo)
+
+    # convertir a mono si es estéreo
+    if len(señal.shape)>1:
+        señal=señal[:,0]
+
+    señales.append(señal)
+    frecuencias_muestreo.append(fs)
+
+for i, señal in enumerate(señales):
+    fs = frecuencias_muestreo[i]
+    t = np.arange(len(señal)) / fs
+
+    plt.figure()
+    plt.plot(t, señal)
+    plt.title(f"Hombre {i+1} - Dominio del tiempo")
+    plt.xlabel("Tiempo [s]")
+    plt.ylabel("Amplitud")
+    plt.show()
+
+
+```
+# Señal de voz de hombres 
+
+
+
+<img width="717" height="516" alt="image" src="https://github.com/user-attachments/assets/ebfe05af-d01a-4219-8b2c-01a21dd535f8" />
+
+<img width="727" height="546" alt="image" src="https://github.com/user-attachments/assets/67e4653c-aaf2-4423-b42b-ed105c23ff72" />
+
+<img width="722" height="536" alt="image" src="https://github.com/user-attachments/assets/ebb68533-55c0-4963-b84b-edecc84a86da" />
+
+
+
+
+
+4. Importar las señales de voz en Python y graficarlas en el dominio del tiempo. 
+5. Calcular la Transformada de Fourier de cada señal y graficar su espectro de 
 magnitudes frecuenciales. 
-5. Identificar y reportar las siguientes características de cada señal: 
+6. Identificar y reportar las siguientes características de cada señal: 
 a. Frecuencia fundamental. 
 b. Frecuencia media. 
 c. Brillo. 
