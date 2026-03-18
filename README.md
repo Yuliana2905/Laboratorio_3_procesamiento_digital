@@ -394,11 +394,13 @@ hombres, 150–500 Hz para mujeres) para eliminar ruido no deseado.
 
 ## PARTE C – Comparación y conclusiones 
 Comparar los resultados obtenidos entre las voces masculinas y femeninas.  
-1. ¿Qué diferencias se observan en la frecuencia fundamental? 
-2. ¿Qué otras diferencias notan en términos de brillo, media o intensidad? 
-3. Redactar conclusiones sobre el comportamiento de la voz en hombres y 
+1. ¿Qué diferencias se observan en la frecuencia fundamental?
+
+Se observa que las voces femeninas presentan frecuencias fundamentales mas altas en comparacion con las voces masculinas.
+3. ¿Qué otras diferencias notan en términos de brillo, media o intensidad? 
+4. Redactar conclusiones sobre el comportamiento de la voz en hombres y 
 mujeres a partir de los análisis realizados. 
-4. Discuta la importancia clínica del jitter y shimmer en el análisis de la voz.
+5. Discuta la importancia clínica del jitter y shimmer en el análisis de la voz.
 
 ## PREGUNTAS PARA LA DISCUSIÓN 
 - ¿Cómo es la frecuencia fundamental de la densidad espectral de potencia asociada a una señal de voz masculina con respecto a la que se obtiene a partir de una señal de voz femenina, mayor o menor? ¿Qué hay del valor RMS? 
