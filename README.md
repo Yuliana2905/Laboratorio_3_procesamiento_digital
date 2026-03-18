@@ -399,7 +399,7 @@ Comparar los resultados obtenidos entre las voces masculinas y femeninas.
 Se observa que las voces femeninas presentan frecuencias fundamentales mas altas en comparacion con las voces masculinas, en los resultados otenuudos las mijeres presentas valores FO entre aproximadamente 238 y 276 HZ los cual se encuentra dentro del rango esperado para la voz femenina por otro lad, las voces masculinas deberian ubicarse en un rango mas bajo entre 85 y 180 Hz sin embargo en algunos valores se obtivo 178 Hz esto sugiere pposibles errores en la detección, asociados a la identificacion de armonicos en lugar de frecuencias reales, este diferencias se debe a factores fisiologicos, ya que las mujeres poseen cuerdas vocales mas cortas y delgadas lo que genera una mayor frecuencias de vibracion y un tomo más agudo.
 
 
-3. ¿Qué otras diferencias notan en términos de brillo, media o intensidad?
+2. ¿Qué otras diferencias notan en términos de brillo, media o intensidad?
 
    Se evidencia que las voces femeninas presentan valores elevados de frecuencia media 1064 a 1358 Hz lo que indica una mayor concentracion de energía en frecuencias altas, esto se traduce a una precepción de voz mas brillante o aguda, en las voces masculinas se observan valores incluso mas altos en algunos casos superiores a 2000 hz esto se puede atribuir a ruidos, irregularidades de la reñal o caracteristicas particulares de la voz qiue incrementan la frecuencia.
    En terminos de intensidad, se observan variaciones entre los hablamtes algunas voces masculinas presentas RMS mas altos indicando mayor energía en la señal, en las voces femeninas se muestran valores mas moderados y homogeneos.
