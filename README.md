@@ -135,6 +135,16 @@ for i, señal in enumerate(señales):
 
 <img width="722" height="536" alt="image" src="https://github.com/user-attachments/assets/ebb68533-55c0-4963-b84b-edecc84a86da" />
 
+
+## Señal de voz mujeres 
+
+<img width="725" height="533" alt="image" src="https://github.com/user-attachments/assets/8d024c3e-600b-4404-b5f2-562dc2903b15" />
+
+<img width="722" height="529" alt="image" src="https://github.com/user-attachments/assets/1515e963-e16a-4c3d-9e9d-b1111759dcda" />
+
+<img width="724" height="528" alt="image" src="https://github.com/user-attachments/assets/1202985e-5727-437b-9dd2-8fda88ee640f" />
+
+
 Se aplico la transformada rapida de Fourier FFT acada señal con el objetico de obtener su representacion en el dominio de la frecuencia, a partiide de esta transformacion se generaron los espectros de magnitud correspondientes, para una mejor visualización de los componentes espectrales los resultados dieron representadoe en escala semiligaritmica, lo cual permitio resaltar componentes de alta como baja amplitud.
 
 En los espectros obtenidos se identificaron picos dominanres correspondientes a la frecuencia fundamental en cada señal, asi como la presencia de armónicos distribuidos a lo largo del espectro, se observ una mayor concentracion de energía en bajas frecuencias para los voces masculinas, mientras que las voces femenicas presentarpon una distribucion espectral con mayor contenido en frecuencias más altas.
@@ -182,6 +192,28 @@ Primeros 10 valores de frecuencia:
 Primeros 10 valores de magnitud:
 [265656.62790157 397186.22697283 844857.6364096  710903.15710983
  105251.69233926]
+
+
+FFT Mujer 1
+Primeros 10 valores de frecuencia:
+[0.1326639  0.26532779 0.39799169 0.53065559 0.66331949]
+Primeros 10 valores de magnitud:
+[402854.19688342 632663.6091195  647270.53713613 424112.69031802
+ 459557.16973216]
+
+FFT Mujer 2
+Primeros 10 valores de frecuencia:
+[0.13702674 0.27405347 0.41108021 0.54810695 0.68513369]
+Primeros 10 valores de magnitud:
+[185575.20383242 138237.23694912 137726.3182503  300854.25949267
+  77546.73802433]
+
+FFT Mujer 3
+Primeros 10 valores de frecuencia:
+[0.12824055 0.25648109 0.38472164 0.51296218 0.64120273]
+Primeros 10 valores de magnitud:
+[139508.3856951  173468.29266628 179561.80456479  54818.52322979
+  65485.21498979]
 ```
 
 ```phyton
@@ -198,6 +230,10 @@ for i, (freqs, magnitud) in enumerate(resultados):
 Hombre 1 : Frecuencia fundamental: 216.26 Hz
 Hombre 2 : Frecuencia fundamental: 215.04 Hz
 Hombre 3 : Frecuencia fundamental: 110.48 Hz
+
+Mujer 1 : Frecuencia fundamental: 269.84 Hz
+Mujer 2 : Frecuencia fundamental: 275.56 Hz
+Mujer 3 : Frecuencia fundamental: 238.14 Hz
 ```
 ```phyton
 plt.semilogy()
@@ -223,6 +259,7 @@ for i,(freqs, magnitud) in enumerate(resultados):
     plt.show()
 
 ```
+## Grafica espectro voz hombres
 
 <img width="709" height="563" alt="image" src="https://github.com/user-attachments/assets/c07133cb-1530-4913-8f52-b85de972fcb2" />
 
@@ -230,19 +267,98 @@ for i,(freqs, magnitud) in enumerate(resultados):
 
 <img width="730" height="573" alt="image" src="https://github.com/user-attachments/assets/2d6ad098-6094-41b9-af9c-975c26b3a8e2" />
 
+## Grafica espectro voz mujeres 
+
+<img width="708" height="525" alt="image" src="https://github.com/user-attachments/assets/6010b1e9-10b0-4ce1-9161-de3be23b17ac" />
+
+<img width="718" height="567" alt="image" src="https://github.com/user-attachments/assets/35765e52-fec7-47ec-b318-1d7e108a0751" />
+
+<img width="731" height="570" alt="image" src="https://github.com/user-attachments/assets/37ce6fd3-3fee-47dd-9d5c-912e27fcd683" />
 
 
+A partir del análisis espe ta, se calcularon loas siguientres parámetros característicos para cada señal:
+
+Frecuancia fundamental (FO): determina como la frecuencia con mayor magnitud dentro de rango específico (80-300 Hz para hombres y 150-500 Hz para mujeres) lo cual permitió evital la detección de armónicos o ruido.
+
+Frecuencia media o centroide espectral: calculada como el promedio poderado de las frecuencias presentes en la señal, proporcionado una medida de las distribución de energía en el espectro.
+
+Brillo: asociado directamente al centroide espectral, representa la percepción de claridad o agudeza de la voz 
 
 
+intensidad (RMS): medida de la energía de la señal en el dominio del tiempo, relacionada con la ampkitud promedio de la señal.
 
-4. Importar las señales de voz en Python y graficarlas en el dominio del tiempo. 
-5. Calcular la Transformada de Fourier de cada señal y graficar su espectro de 
-magnitudes frecuenciales. 
-6. Identificar y reportar las siguientes características de cada señal: 
-a. Frecuencia fundamental. 
-b. Frecuencia media. 
-c. Brillo. 
-d. Intensidad (energía).
+
+```phyton
+tabla_resultados=[]
+
+for i, (freqs, magnitud) in enumerate(resultados):
+
+    señal=señales[i]
+    magnitud=np.abs(magnitud) + 1e-10
+
+    rango=(freqs>150) & (freqs<500)
+    freqs_filtradas=freqs[rango]
+    magnitud_filtrada=magnitud[rango]
+    f0=freqs_filtradas[np.argmax(magnitud_filtrada)]
+
+
+    centroide=np.sum(freqs*magnitud)/np.sum(magnitud)
+    rms=np.sqrt(np.mean(señal**2))
+    brillo=centroide
+    tabla_resultados.append([f"Mujer {i+1}", f0, centroide, brillo, rms])
+
+```
+```phyton
+for fila in tabla_resultados:
+    print(f"\n{fila[0]}")
+    print(f"F0: {fila[1]:.2f} Hz")
+    print(f"Frecuencia media: {fila[2]:.2f} Hz")
+    print(f"Brillo: {fila[3]:.2f} Hz")
+    print(f"Intensidad (RMS): {fila[4]:.4f}")
+
+
+Hombre 1
+F0: 216.26 Hz
+Frecuencia media: 2328.94 Hz
+Brillo: 2328.94 Hz
+Intensidad (RMS): 46.9296
+
+Hombre 2
+F0: 215.04 Hz
+Frecuencia media: 1003.64 Hz
+Brillo: 1003.64 Hz
+Intensidad (RMS): 31.6328
+
+Hombre 3
+F0: 110.48 Hz
+Frecuencia media: 2571.51 Hz
+Brillo: 2571.51 Hz
+Intensidad (RMS): 28.5277
+Mujer 1
+F0: 269.84 Hz
+Frecuencia media: 1322.48 Hz
+Brillo: 1322.48 Hz
+Intensidad (RMS): 33.4066
+
+Mujer 2
+F0: 275.56 Hz
+Frecuencia media: 1358.21 Hz
+Brillo: 1358.21 Hz
+Intensidad (RMS): 28.1623
+
+Mujer 3
+F0: 238.14 Hz
+Frecuencia media: 1064.55 Hz
+Brillo: 1064.55 Hz
+Intensidad (RMS): 27.8765
+```
+
+En los resultados obtenidos evidencian que las voces masculinas presentan frecuancias fundamentales mas bajas en cojmparacion con las voces feeninas, lo cual es cosistente con las diferencias fisiologicas en las cuerdas vocales.
+
+el analisis del centroide espectral permitio identificar una moyor concentración de energía en frecuencias bajas para las voces masculinas, mientras que las voces femeninas mostraron valores mas elevados, asociados a un mayor contenido de frecuencias altas, la intensidad de las señales vario entre los distintos hablantes, lo cual se atribuya a diferencias de energía vocal duranyte las grabaciones y la distancia del micrófono.
+
+En el caso de las voces femeninas, las frecuencias fundamentales se encuentran dentro del rango esperado (165–255 Hz), con valores ligeramente superiores en algunos casos, lo cual puede atribuirse a variaciones individuales en la voz o a la presencia de componentes armónicos dominantes, para las voces masculinas, se observa que una de las señales (Hombre 3) presenta una frecuencia fundamental de 110.48 Hz, consistente con el rango típico masculino (85–180 Hz). Sin embargo, las otras dos señales presentan valores cercanos a 215 Hz, lo cual sugiere la posible detección de armónicos en lugar de la frecuencia fundamental real, fenómeno común en el análisis espectral cuando la energía de los armónicos supera la del componente fundamental.
+
 
 ### PARTE B – Medición de Jitter y Shimmer 
 1. Seleccione una de las grabaciones realizadas en la Parte A por cada género 
