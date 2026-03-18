@@ -353,7 +353,7 @@ Brillo: 1064.55 Hz
 Intensidad (RMS): 27.8765
 ```
 
-En los resultados obtenidos evidencian que las voces masculinas presentan frecuancias fundamentales mas bajas en cojmparacion con las voces feeninas, lo cual es cosistente con las diferencias fisiologicas en las cuerdas vocales.
+En los resultados obtenidos evidencian que las voces masculinas presentan frecuancias fundamentales mas bajas en cojmparacion con las voces femeninas, lo cual es cosistente con las diferencias fisiologicas en las cuerdas vocales.
 
 el analisis del centroide espectral permitio identificar una moyor concentración de energía en frecuencias bajas para las voces masculinas, mientras que las voces femeninas mostraron valores mas elevados, asociados a un mayor contenido de frecuencias altas, la intensidad de las señales vario entre los distintos hablantes, lo cual se atribuya a diferencias de energía vocal duranyte las grabaciones y la distancia del micrófono.
 
