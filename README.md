@@ -125,7 +125,7 @@ for i, señal in enumerate(señales):
 
 
 ```
-# Señal de voz de hombres 
+## Señal de voz de hombres 
 
 
 
@@ -134,6 +134,102 @@ for i, señal in enumerate(señales):
 <img width="727" height="546" alt="image" src="https://github.com/user-attachments/assets/67e4653c-aaf2-4423-b42b-ed105c23ff72" />
 
 <img width="722" height="536" alt="image" src="https://github.com/user-attachments/assets/ebb68533-55c0-4963-b84b-edecc84a86da" />
+
+Se aplico la transformada rapida de Fourier FFT acada señal con el objetico de obtener su representacion en el dominio de la frecuencia, a partiide de esta transformacion se generaron los espectros de magnitud correspondientes, para una mejor visualización de los componentes espectrales los resultados dieron representadoe en escala semiligaritmica, lo cual permitio resaltar componentes de alta como baja amplitud.
+
+En los espectros obtenidos se identificaron picos dominanres correspondientes a la frecuencia fundamental en cada señal, asi como la presencia de armónicos distribuidos a lo largo del espectro, se observ una mayor concentracion de energía en bajas frecuencias para los voces masculinas, mientras que las voces femenicas presentarpon una distribucion espectral con mayor contenido en frecuencias más altas.
+
+```python
+from scipy.fft import fft, fftfreq
+
+resultados=[]
+
+for i, señal in enumerate(señales):
+    fs=frecuencias_muestreo[i]
+    N=len(señal)
+
+    fft_vals=fft(señal)
+    freqs=fftfreq(N, 1/fs)
+    mask=freqs>0 #frecuencias positivas
+    freqs=freqs[mask]
+    fft_vals=fft_vals[mask]
+    magnitud=np.abs(fft_vals)
+    resultados.append((freqs, magnitud))
+    print(f"\nFFT Hombre {i+1}")
+    print("Primeros 10 valores de frecuencia:")
+    print(freqs[:5])
+    print("Primeros 10 valores de magnitud:")
+    print(magnitud[:5])
+
+
+FFT Hombre 1
+Primeros 10 valores de frecuencia:
+[0.12238903 0.24477807 0.3671671  0.48955614 0.61194517]
+Primeros 10 valores de magnitud:
+[245128.16220818 246301.43903288  66779.20096766 172010.12909579
+ 149546.51756808]
+
+FFT Hombre 2
+Primeros 10 valores de frecuencia:
+[0.11712556 0.23425113 0.35137669 0.46850225 0.58562782]
+Primeros 10 valores de magnitud:
+[ 97267.63534633 115253.04210141 108852.68008483 142645.45850787
+  13060.71698605]
+
+FFT Hombre 3
+Primeros 10 valores de frecuencia:
+[0.12772502 0.25545004 0.38317505 0.51090007 0.63862509]
+Primeros 10 valores de magnitud:
+[265656.62790157 397186.22697283 844857.6364096  710903.15710983
+ 105251.69233926]
+```
+
+```phyton
+for i, (freqs, magnitud) in enumerate(resultados):
+
+    rango=(freqs>80) & (freqs<300)
+    freqs_filtradas=freqs[rango]
+    magnitud_filtrada=magnitud[rango]
+
+    f0=freqs_filtradas[np.argmax(magnitud_filtrada)]
+
+    print(f"Hombre {i+1} : Frecuencia fundamental: {f0:.2f} Hz")
+
+Hombre 1 : Frecuencia fundamental: 216.26 Hz
+Hombre 2 : Frecuencia fundamental: 215.04 Hz
+Hombre 3 : Frecuencia fundamental: 110.48 Hz
+```
+```phyton
+plt.semilogy()
+for i,(freqs, magnitud) in enumerate(resultados):
+    magnitud=magnitud+1e-10 # evitar log(0)
+
+    #cálculo de F0
+    rango=(freqs>80) & (freqs<300)
+    freqs_filtradas=freqs[rango]
+    magnitud_filtrada=magnitud[rango]
+    f0=freqs_filtradas[np.argmax(magnitud_filtrada)]
+
+    plt.semilogy(freqs, magnitud)
+
+    plt.title(f"Hombre {i+1}-Espectro(semilogaritmica)")
+    plt.xlabel("Frecuencia [Hz]")
+    plt.ylabel("Magnitud (log)")
+    plt.xlim(0, 1000)
+    plt.grid()
+
+    print(f"Mujer {i+1}: F0 = {f0:.2f}Hz")
+
+    plt.show()
+
+```
+
+<img width="709" height="563" alt="image" src="https://github.com/user-attachments/assets/c07133cb-1530-4913-8f52-b85de972fcb2" />
+
+<img width="712" height="563" alt="image" src="https://github.com/user-attachments/assets/f6dc8129-51fd-40c3-a839-555879ccc922" />
+
+<img width="730" height="573" alt="image" src="https://github.com/user-attachments/assets/2d6ad098-6094-41b9-af9c-975c26b3a8e2" />
+
 
 
 
