@@ -555,7 +555,13 @@ Además, existe una alta variabilidad interindividual, ya que factores como la e
 
 ## Parte A
 
+<img width="1024" height="1536" alt="image" src="https://github.com/user-attachments/assets/b0f97905-c3e7-4c12-b3a5-18be7ec820b7" />
+
+
 ## Parte B
+
+<img width="1024" height="1536" alt="image" src="https://github.com/user-attachments/assets/7dc56c60-3733-49b3-babf-fb0df4d8becc" />
+
 
 ## Bibliografia 
 
