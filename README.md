@@ -361,36 +361,127 @@ En el caso de las voces femeninas, las frecuencias fundamentales se encuentran d
 
 
 ### PARTE B – Medición de Jitter y Shimmer 
-1. Seleccione una de las grabaciones realizadas en la Parte A por cada género 
+
+###### 1. Seleccione una de las grabaciones realizadas en la Parte A por cada género 
 (una voz de hombre y una de mujer). 
 - Aplique un filtro pasa-banda en el rango de la voz (80–400 Hz para 
-hombres, 150–500 Hz para mujeres) para eliminar ruido no deseado. 
-2. Medición del Jitter (variación en la frecuencia fundamental):
+hombres, 150–500 Hz para mujeres) para eliminar ruido no deseado.
 
 
+```phyton
+from scipy.signal import butter, filtfilt, find_peaks
+# Filtro 
+def bandpass(signal, fs, low, high):
+    b, a = butter(4, [low/(fs/2), high/(fs/2)], btype='band')
+    return filtfilt(b, a, signal)
+# Señal hombre 1
+signal = señales[0]
+fs = frecuencias_muestreo[0]
+# Filtrar rango hombre
+signal_f = bandpass(signal, fs, 80, 400)
+```
+
+
+##### 2. Medición del Jitter (variación en la frecuencia fundamental):
 - Detecte los periodos de vibración de la señal (usando cruces por cero o picos sucesivos). 
 - Calcule los periodos Ti de la señal de voz. 
 - Obtenga el jitter absoluto:
 
- <img width="524" height="147" alt="image" src="https://github.com/user-attachments/assets/7e34ee44-ffa9-448c-b5bf-f5f476f32166" />
+```phyton
 
+jitter_abs = np.mean(np.abs(np.diff(T)))
+
+```
+
+
+ <img width="524" height="147" alt="image" src="https://github.com/user-attachments/assets/7e34ee44-ffa9-448c-b5bf-f5f476f32166" />
+ 
 - Calcule el jitter relativo (%):
+
+```phyton
+
+jitter_rel = (jitter_abs / np.mean(T)) * 100
+
+```
 
 <img width="327" height="86" alt="image" src="https://github.com/user-attachments/assets/d41d5e56-9ef6-40a2-a828-1150dce5e1a9" />
 
-3. Medición del Shimmer (variación en la amplitud): 
+###### 3. Medición del Shimmer (variación en la amplitud): 
 - Detecte los picos de amplitud Ai en cada ciclo. 
 - Obtenga el shimmer absoluto:
+
 
 <img width="565" height="135" alt="image" src="https://github.com/user-attachments/assets/e2bc5541-70fe-4b86-ad16-5536dd9af6f7" />
 
 
-- Calcule el shimmer relativo (%):
+```phyton
+shimmer_abs = np.mean(np.abs(np.diff(A)))
+```
 
+
+- Calcule el shimmer relativo (%):
 <img width="639" height="126" alt="image" src="https://github.com/user-attachments/assets/e1bf0258-2b53-4c57-a8fc-42b8bb019c8a" />
 
+```phyton
+shimmer_rel = (shimmer_abs / np.mean(A)) * 100
+```
 
-4. Presente los valores obtenidos de jitter y shimmer para cada una de las 6 grabaciones (3 hombres, 3 mujeres).
+
+#### Valores obtenidos:
+
+Hombres
+
+<img width="254" height="50" alt="image" src="https://github.com/user-attachments/assets/a737e067-11f9-4a4f-89e0-ebeb535cbb26" />
+
+Mujer
+
+<img width="334" height="88" alt="image" src="https://github.com/user-attachments/assets/dab53fc3-e85b-4bc6-9a43-ab1f6e69bd7d" />
+
+
+###### 4. Presente los valores obtenidos de jitter y shimmer para cada una de las 6 grabaciones (3 hombres, 3 mujeres).
+
+```phyton
+import numpy as np
+from scipy.io import wavfile
+from scipy.signal import butter, filtfilt, find_peaks
+def bandpass(signal, fs, low, high):
+    b, a = butter(4, [low/(fs/2), high/(fs/2)], btype='band')
+    return filtfilt(b, a, signal)
+def jitter_shimmer(signal, fs, low, high):
+    signal_f = bandpass(signal, fs, low, high)
+    peaks, _ = find_peaks(signal_f, height=0)
+    if len(peaks) < 3:
+        return None, None
+    t = peaks / fs
+    T = np.diff(t)
+    A = signal_f[peaks]
+    jitter = np.mean(np.abs(np.diff(T))) / np.mean(T) * 100
+    shimmer = np.mean(np.abs(np.diff(A))) / np.mean(A) * 100
+    return jitter, shimmer
+archivos_hombres = ["AUDIO HOMBRE 1 (1).wav", "HOMBRE 2.wav", "HOMBRE 3.wav"]
+archivos_mujeres = ["AUDIO MUJER 1.wav", "MUJER 2.wav", "MUJER 3.wav"]
+print("RESULTADOS JITTER Y SHIMMER HOMBRES ")
+for i, archivo in enumerate(archivos_hombres):
+    fs, señal = wavfile.read(archivo)
+    if len(señal.shape) > 1:
+        señal = señal[:,0]
+    jitter, shimmer = jitter_shimmer(señal, fs, 80, 400)
+    print(f"\nHombre {i+1}")
+    print(f"Jitter (%): {jitter:.4f}")
+    print(f"Shimmer (%): {shimmer:.4f}")
+print("\n RESULTADOS JITTER Y SHIMMER MUJERES ")
+for i, archivo in enumerate(archivos_mujeres):
+    fs, señal = wavfile.read(archivo)
+    if len(señal.shape) > 1:
+        señal = señal[:,0]
+    jitter, shimmer = jitter_shimmer(señal, fs, 150, 500)
+    print(f"\nMujer {i+1}")
+    print(f"Jitter (%): {jitter:.4f}")
+    print(f"Shimmer (%): {shimmer:.4f}")
+```
+
+## Valores obtenidos 
+<img width="306" height="467" alt="image" src="https://github.com/user-attachments/assets/5c51d372-21c0-4ce3-a300-0d87887318bc" />
 
 ## PARTE C – Comparación y conclusiones 
 Comparar los resultados obtenidos entre las voces masculinas y femeninas.  
@@ -401,16 +492,23 @@ Se observa que las voces femeninas presentan frecuencias fundamentales mas altas
 
 2. ¿Qué otras diferencias notan en términos de brillo, media o intensidad?
 
-   Se evidencia que las voces femeninas presentan valores elevados de frecuencia media 1064 a 1358 Hz lo que indica una mayor concentracion de energía en frecuencias altas, esto se traduce a una precepción de voz mas brillante o aguda, en las voces masculinas se observan valores incluso mas altos en algunos casos superiores a 2000 hz esto se puede atribuir a ruidos, irregularidades de la reñal o caracteristicas particulares de la voz qiue incrementan la frecuencia.
-   En terminos de intensidad, se observan variaciones entre los hablamtes algunas voces masculinas presentas RMS mas altos indicando mayor energía en la señal, en las voces femeninas se muestran valores mas moderados y homogeneos.
+Se evidencia que las voces femeninas presentan valores elevados de frecuencia media 1064 a 1358 Hz lo que indica una mayor concentracion de energía en frecuencias altas, esto se traduce a una precepción de voz mas brillante o aguda, en las voces masculinas se observan valores incluso mas altos en algunos casos superiores a 2000 hz esto se puede atribuir a ruidos, irregularidades de la reñal o caracteristicas particulares de la voz qiue incrementan la frecuencia.
+En terminos de intensidad, se observan variaciones entre los hablamtes algunas voces masculinas presentas RMS mas altos indicando mayor energía en la señal, en las voces femeninas se muestran valores mas moderados y homogeneos.
+Estas diferencias pueden deberse afactores como la fuerza con la que se emite la voz, la distancia del microfono o las condiciones de grabación, la intensidad no depende unicamente del género, sino tambien de las condiciones experimentales.
    
-
-   Estas diferencias pueden deberse afactores como la fuerza con la que se emite la voz, la distancia del microfono o las condiciones de grabación, la intensidad no depende unicamente del género, sino tambien de las condiciones experimentales.
+3. Redactar conclusiones sobre el comportamiento de la voz en hombres y mujeres a partir de los análisis realizados.
    
-3. Redactar conclusiones sobre el comportamiento de la voz en hombres y 
-mujeres a partir de los análisis realizados. 
-4. Discuta la importancia clínica del jitter y shimmer en el análisis de la voz.
+-A partir del análisis realizado en el dominio de la frecuencia y del cálculo de parámetros espectrales, se evidencian diferencias claras entre las voces masculinas y femeninas. En general, las voces masculinas presentan una frecuencia fundamental (F0) menor, lo cual se asocia con la mayor longitud y masa de las cuerdas vocales. Por el contrario, las voces femeninas muestran valores de F0 más altos, generando un tono más agudo.
 
+En cuanto a las características espectrales, se observó que el centroide espectral (brillo) tiende a ser mayor en las voces femeninas, lo que indica una mayor concentración de energía en frecuencias altas. Asimismo, la intensidad de la señal (RMS) puede variar entre individuos, pero no presenta una diferencia tan marcada por género como la frecuencia fundamental.
+
+Respecto a la estabilidad de la señal, los valores de jitter y shimmer permiten evaluar la regularidad en la vibración de las cuerdas vocales. En condiciones normales, estos valores se mantienen bajos, lo que indica una producción vocal estable. Las variaciones observadas entre las grabaciones pueden estar asociadas a factores como la calidad de la grabación, ruido ambiental o diferencias individuales en la producción de la voz.
+
+5. Discuta la importancia clínica del jitter y shimmer en el análisis de la voz.
+
+El jitter y el shimmer son parámetros ampliamente utilizados en el análisis clínico de la voz, ya que permiten evaluar la estabilidad y calidad de la vibración de las cuerdas vocales. El jitter mide las variaciones en la frecuencia fundamental, mientras que el shimmer cuantifica las variaciones en la amplitud de la señal.
+Desde el punto de vista clínico, valores elevados de jitter pueden indicar irregularidades en el periodo de vibración, lo cual puede estar asociado a trastornos como disfonías, fatiga vocal o alteraciones neuromusculares. De manera similar, un shimmer elevado puede reflejar inestabilidad en la amplitud de la señal, lo que puede relacionarse con patologías que afectan el control de la voz.
+Estos parámetros son especialmente útiles en la detección temprana y seguimiento de enfermedades vocales, ya que permiten cuantificar cambios que no siempre son perceptibles de forma auditiva. Además, son utilizados en la evaluación de pacientes antes y después de tratamientos médicos o terapias de rehabilitación vocal.
 ## PREGUNTAS PARA LA DISCUSIÓN 
 
 - ¿Cómo es la frecuencia fundamental de la densidad espectral de potencia asociada a una señal de voz masculina con respecto a la que se obtiene a partir de una señal de voz femenina, mayor o menor? ¿Qué hay del valor RMS?
@@ -421,6 +519,13 @@ En el caso del valor RMS intensidas a diferencia de la frecuencia fundamental el
 
   
 -¿Qué limitaciones plantea el uso de características como shimmer y jitter para la detección de patologías como disartrias y afasias?
+
+
+El uso de parámetros como el jitter y el shimmer presenta varias limitaciones en la detección de patologías del habla como las disartrias y las afasias, debido a que estos indicadores evalúan únicamente la estabilidad de la vibración de las cuerdas vocales y no otros aspectos complejos del lenguaje.
+En primer lugar, tanto el jitter como el shimmer se centran en características acústicas de la señal, por lo que son más sensibles a alteraciones en la fonación. Sin embargo, patologías como la afasia están relacionadas principalmente con procesos cognitivos y lingüísticos (comprensión y producción del lenguaje), lo que implica que estos parámetros no son suficientes para su identificación.
+En el caso de la disartria, aunque sí existe un componente motor que afecta la producción del habla, esta condición involucra múltiples factores como la articulación, la respiración y la coordinación neuromuscular. Por lo tanto, el jitter y el shimmer solo capturan una parte limitada del problema, sin reflejar completamente la severidad o el tipo de alteración.
+Otra limitación importante es la sensibilidad al ruido y a la calidad de la grabación. Variaciones en el entorno, el micrófono o la señal pueden alterar significativamente los valores de jitter y shimmer, generando resultados poco confiables o difíciles de interpretar.
+Además, existe una alta variabilidad interindividual, ya que factores como la edad, el género y las características propias de cada hablante influyen en estos parámetros, lo que dificulta establecer umbrales universales para diagnóstico clínico.
 
 # Diagramas de flujo
 
