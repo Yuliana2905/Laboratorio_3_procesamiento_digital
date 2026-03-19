@@ -412,7 +412,12 @@ mujeres a partir de los análisis realizados.
 4. Discuta la importancia clínica del jitter y shimmer en el análisis de la voz.
 
 ## PREGUNTAS PARA LA DISCUSIÓN 
+
 - ¿Cómo es la frecuencia fundamental de la densidad espectral de potencia asociada a una señal de voz masculina con respecto a la que se obtiene a partir de una señal de voz femenina, mayor o menor? ¿Qué hay del valor RMS?
+
+La frecuencia fundamental de la voz masculina es menor que la voz femenina, esto se debe a que las cuerdad vocales masculinas son mas largas y más gruesas, lo que produce una vibración mpas lenta por lo tanto frecuencias ,as bajas, en contraste las voces femeninas presentana frecuencias fundamentales mas altas debido a cuerdas vocales más cortas y delgadas en terminos tipicos los hombres tiene una frecuencia entre 85 y 180 Hz miesntras que las muijeres entre 165-255 Hz
+
+En el caso del valor RMS intensidas a diferencia de la frecuencia fundamental el RMS depende principalmente de la energía de la señal, la intensidad con la que se habla, la distancia al microfono, las condiciones de grabacion, por lo tanto pueden haber voces masculinas con mayor RMS o voces femeninas con mayor RMS, no existe una diferencias sistemática entre géneros, ya que  este depende principalmente de la intensidad de la señal y condiciones externas 
 
   
 -¿Qué limitaciones plantea el uso de características como shimmer y jitter para la detección de patologías como disartrias y afasias?
