@@ -483,6 +483,30 @@ for i, archivo in enumerate(archivos_mujeres):
 ## Valores obtenidos 
 <img width="306" height="467" alt="image" src="https://github.com/user-attachments/assets/5c51d372-21c0-4ce3-a300-0d87887318bc" />
 
+##### Hombre 1
+
+El valor de jitter obtenido para el Hombre 1 (36.4693%) es considerablemente alto respecto a los valores normales, lo que indica una gran variabilidad en la frecuencia de la voz y, por tanto, una inestabilidad en la vibración de las cuerdas vocales. De igual forma, el shimmer (88.2101%) también es extremadamente elevado, evidenciando una fuerte variación en la amplitud de la señal. Estos resultados sugieren que la señal presenta irregularidades importantes, probablemente asociadas a ruido, condiciones de grabación no controladas o ausencia de una vocal sostenida adecuada, por lo que no representan un comportamiento fisiológico normal.
+
+##### Hombre 2
+
+Para el Hombre 2, el jitter (32.0216%) sigue siendo muy superior a los rangos esperados, indicando inestabilidad en la frecuencia de la señal de voz. El shimmer (99.1944%) es igualmente elevado, lo que refleja una gran variabilidad en la amplitud. En conjunto, estos valores evidencian una señal altamente irregular, lo que sugiere la presencia de factores externos como ruido o errores en la adquisición de la señal, limitando su validez para un análisis clínico confiable.
+
+##### Hombre 3
+
+En el caso del Hombre 3, el jitter (33.7516%) mantiene la tendencia de valores elevados, indicando variaciones significativas en el periodo de vibración. El shimmer (120.6437%) es el más alto entre los hombres, lo que evidencia una inestabilidad muy marcada en la amplitud de la señal. Estos resultados refuerzan la idea de que la señal analizada presenta alteraciones importantes, posiblemente derivadas de condiciones no ideales de grabación o procesamiento.
+
+##### Mujer 1
+
+La Mujer 1 presenta un jitter de 17.0481%, el cual, aunque menor que en los hombres, sigue siendo considerablemente alto en comparación con los valores normales. El shimmer (46.6908%) también supera ampliamente los rangos esperados, indicando variabilidad en la amplitud de la señal. Esto sugiere que la voz analizada presenta inestabilidad, posiblemente influenciada por factores externos más que por condiciones fisiológicas reales.
+
+##### Mujer 2
+
+Para la Mujer 2, el jitter (16.1499%) muestra una ligera disminución respecto a las otras grabaciones, pero continúa siendo elevado. El shimmer (47.8819%) mantiene un nivel alto, indicando variaciones en la intensidad de la señal. En conjunto, estos valores reflejan una señal con irregularidades, posiblemente asociadas a la calidad de la grabación o al método de análisis.
+
+##### Mujer 3
+
+En el caso de la Mujer 3, el jitter (18.6766%) vuelve a incrementarse ligeramente, indicando variabilidad en la frecuencia de la voz. El shimmer (62.3753%) también es elevado, mostrando inestabilidad en la amplitud. Estos resultados, aunque menores que en los hombres, siguen estando por encima de los rangos normales, lo que sugiere que la señal no es completamente representativa de una voz fisiológicamente estable.
+
 ## PARTE C – Comparación y conclusiones 
 Comparar los resultados obtenidos entre las voces masculinas y femeninas.  
 1. ¿Qué diferencias se observan en la frecuencia fundamental?
