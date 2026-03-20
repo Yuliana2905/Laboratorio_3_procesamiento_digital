@@ -380,6 +380,9 @@ fs = frecuencias_muestreo[0]
 # Filtrar rango hombre
 signal_f = bandpass(signal, fs, 80, 400)
 ```
+### calculos a mano Filtro pasabanda
+
+![capture_temp](https://github.com/user-attachments/assets/b743a38c-7a05-4d24-9a71-603efff735f4)
 
 
 ##### 2. Medición del Jitter (variación en la frecuencia fundamental):
