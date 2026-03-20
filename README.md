@@ -507,6 +507,39 @@ Para la Mujer 2, el jitter (16.1499%) muestra una ligera disminución respecto a
 
 En el caso de la Mujer 3, el jitter (18.6766%) vuelve a incrementarse ligeramente, indicando variabilidad en la frecuencia de la voz. El shimmer (62.3753%) también es elevado, mostrando inestabilidad en la amplitud. Estos resultados, aunque menores que en los hombres, siguen estando por encima de los rangos normales, lo que sugiere que la señal no es completamente representativa de una voz fisiológicamente estable.
 
+# SNR 
+Aunque las señales originales ya contienen ruido debido al proceso de adquisición, se decidió añadir ruido adicional de forma controlada con el fin de evaluar la sensibilidad del análisis frente a la degradación de la señal. Esto permitió evidenciar cómo el ruido afecta la identificación de la frecuencia fundamental y altera parámetros como jitter y shimmer, demostrando la importancia de trabajar con señales de buena calidad.
+### HOMBRES
+1
+<img width="708" height="493" alt="image" src="https://github.com/user-attachments/assets/2d6f9b39-d337-47d7-b010-c4974edf9872" />
+2
+<img width="690" height="445" alt="image" src="https://github.com/user-attachments/assets/d8428574-2da0-42dc-8df2-22071ecefba2" />
+3
+<img width="613" height="482" alt="image" src="https://github.com/user-attachments/assets/ab78d380-0e14-40eb-a100-192235b9ca41" />
+
+### MUJERES
+1
+
+<img width="652" height="461" alt="image" src="https://github.com/user-attachments/assets/661c0c48-c3a6-4dce-9646-45ffc281b12d" />
+
+2
+
+<img width="656" height="499" alt="image" src="https://github.com/user-attachments/assets/10be62fd-d1c6-4e8b-a9ab-d35d517e2c8f" />
+
+
+3
+
+<img width="634" height="461" alt="image" src="https://github.com/user-attachments/assets/4c31cb95-05ca-4370-a420-9c5ea6320b87" />
+
+
+En el análisis realizado se evidencian diferencias claras entre las voces masculinas y femeninas tanto en el dominio del tiempo como en el dominio de la frecuencia. Las voces masculinas presentan una frecuencia fundamental (F0) menor, lo que se traduce en un tono más grave, mientras que las voces femeninas muestran una F0 mayor, generando un tono más agudo. Esto se debe a diferencias fisiológicas en las cuerdas vocales, como su longitud y masa.
+
+En el dominio del tiempo, las señales femeninas tienden a presentar oscilaciones más rápidas, mientras que las masculinas muestran variaciones más lentas. En el dominio de la frecuencia, esto se refleja en que las voces femeninas concentran su energía en frecuencias más altas, mientras que las masculinas lo hacen en frecuencias más bajas.
+
+Adicionalmente, parámetros como el centroide espectral (brillo) suelen ser mayores en las voces femeninas, indicando una mayor presencia de componentes de alta frecuencia. En cuanto a la intensidad (RMS), no se observa una diferencia tan marcada por género, ya que depende más de la forma en que se realizó la grabación.
+
+Finalmente, el análisis con ruido (SNR) evidencia que tanto las voces masculinas como femeninas pueden verse afectadas por interferencias, dificultando la identificación de características como la frecuencia fundamental y alterando la estabilidad de la señal.
+
 ## PARTE C – Comparación y conclusiones 
 Comparar los resultados obtenidos entre las voces masculinas y femeninas.  
 1. ¿Qué diferencias se observan en la frecuencia fundamental?
